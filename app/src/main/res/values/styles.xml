@@ -1,0 +1,20 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="mCustomEditText" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textColorHint">@color/colorDarkGray</item>
+        <item name="android:background">@drawable/round_et</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
+</resources>
