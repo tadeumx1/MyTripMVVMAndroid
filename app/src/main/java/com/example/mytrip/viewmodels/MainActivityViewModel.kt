@@ -2,6 +2,8 @@ package com.example.mytrip.viewmodels
 
 import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
+import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 import android.databinding.ObservableField
 import android.widget.TextView
 import android.widget.Toast
@@ -13,6 +15,8 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     public val autonomia: ObservableField<String> = ObservableField()
 
     val resultado: ObservableField<String> = ObservableField()
+
+    val errorInformation : MutableLiveData<String> = MutableLiveData<String>()
 
     fun handleCalculateButtonClick() {
 
@@ -48,15 +52,18 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
 
                 // Caso ocorra erro de conversão numérica, solicita ao usuário para preencher com valores válidos
 
-                Toast.makeText(getApplication(), "Por Favor Informe valores válidos", Toast.LENGTH_LONG).show()
+                // Toast.makeText(getApplication(), "Por Favor Informe valores válidos", Toast.LENGTH_LONG).show()
 
+                errorInformation.value = "Por Favor Informe valores válidos"
             }
 
         } else {
 
             // Caso não tenha preenchido todos os campos, solicita o preenchimento
 
-            Toast.makeText(getApplication(), "Por Favor Informe valores válidos", Toast.LENGTH_LONG).show()
+            // Toast.makeText(getApplication(), "Por Favor Informe valores válidos", Toast.LENGTH_LONG).show()
+
+            errorInformation.value = "Por Favor Informe valores válidos"
 
         }
 
@@ -73,6 +80,12 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
                 && preco?.get() != ""
                 && autonomia?.get() != ""
                 && autonomia?.get() != "0"
+
+    }
+
+    fun getError(): LiveData<String> {
+
+        return errorInformation
 
     }
 
